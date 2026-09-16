@@ -1,0 +1,97 @@
+.login-details-page {
+  width: 100%;
+  min-height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+
+.user-details-card {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 3px 5px 5px rgb(66, 66, 136);
+}
+
+.page-details-header {
+  display: flex;
+}
+
+.page-details-header p {
+  font-size: 30px;
+  padding: 0px;
+  font-weight: bold;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.welcome {
+  color: rgb(126, 27, 84);
+}
+
+.header-name {
+  margin-left: 10px;
+  color: red;
+}
+
+.user-details-header {
+  margin: 10px;
+  text-align: center;
+  color: green;
+}
+
+.user-details-body {
+  width: 100%;
+  padding: 50px;
+}
+
+.login-header {
+  font-weight: bold;
+  color: rgb(196, 153, 11);
+  font-size: 25px;
+}
+.signup-header {
+  color: purple;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.details-row {
+  width: 430px;
+  display: grid;
+  grid-template-columns: 160px 250px;
+
+  align-items: center;
+
+  border-bottom: 1px solid #dee2e6;
+}
+
+.details-row:last-child {
+  border-bottom: none;
+}
+
+.details-label {
+  font-weight: bold;
+  color: #495057;
+  text-align: left;
+  font-size: 20px;
+}
+.details-value {
+  /* font-weight: bold; */
+  color: #0d6efd;
+  text-align: left;
+  font-size: 20px;
+}
+
+@media (max-width: 576px) {
+  .details-card {
+    padding: 25px 15px;
+  }
+
+  .details-row {
+    width: 100%;
+    grid-template-columns: 120px 1fr;
+  }
+}
