@@ -1,12 +1,167 @@
-.err-msg {
-  color: red;
-}
-.red-year {
-  border: 2px solid red;
-  color: red;
+
+
+/* Signup Page */
+
+.signup-page {
+  min-height: 100vh;
+  background-color: #f4f7fb;
+  padding: 40px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
+
+/* Signup Card */
+
+.signup-card {
+  width: 500px;
+  background-color: #ffffff;
+  border: 1px solid #e1e6ed;
+  border-radius: 20px !important;
+}
+
+
+/* Form */
+
+.signup-card form {
+  padding: 30px !important;
+}
+
+
+/* Heading */
+
 .form-header {
-  color: rgb(10, 10, 75);
+  color: #102a56;
   font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+
+/* Labels */
+
+.signup-card label {
+  display: block;
+  color: #26364d;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+
+/* Input Fields */
+
+.signup-card .form-control {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #cfd6df;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 15px;
+  color: #26364d;
+  background-color: #ffffff;
+}
+
+
+/* Input Focus */
+
+.signup-card .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.12);
+  outline: none;
+}
+
+
+/* Gender */
+
+.gender-options {
+  display: flex;
+  gap: 25px;
+  margin-top: 8px;
+}
+
+
+.gender-options div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.gender-options input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #0d6efd;
+}
+
+
+.gender-options span {
+  color: #374151;
+  font-size: 14px;
+}
+
+
+/* Error Messages */
+
+.err-msg {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+
+/* Signup Button */
+
+.signup-btn {
+  width: 100%;
+  height: 44px;
+  background-color: #216cdd;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+
+.signup-btn:hover {
+  background-color: #0b5ed7;
+}
+
+
+/* Login Text */
+
+.login-text {
+  color: #374151;
+  font-size: 14px;
+  padding-bottom: 22px;
+}
+
+
+/* Login Link */
+
+.login-link {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+  .signup-page {
+    padding: 20px 10px;
+  }
+
+  .signup-card {
+    width: 100%;
+  }
 }

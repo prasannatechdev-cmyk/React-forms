@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./login-form.css";
@@ -15,11 +16,11 @@ export default function Loginform() {
   const phonenumber = location.state?.phonenumber;
   const gender = location.state?.gender;
 
-  // Form States //
+  // Form States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Error States //
+  // Error States
   const [emailerror, setEmailerror] = useState();
   const [passworderror, setPassworderror] = useState();
   const [errors, setErrors] = useState("");
@@ -29,17 +30,19 @@ export default function Loginform() {
   const emailfun = (event) => {
     setEmail(event.target.value);
     setEmailerror("");
+    setErrors("");
   };
 
   const passwordfun = (event) => {
     setPassword(event.target.value);
     setPassworderror("");
+    setErrors("");
   };
 
   const submitform = (event) => {
     event.preventDefault();
 
-    // Email validation //
+    // Email validation
     if (email === "") {
       setEmailerror("*email is required");
     } else if (email !== signemail) {
@@ -48,18 +51,16 @@ export default function Loginform() {
       setEmailerror("");
     }
 
-    // Password validation //
-
+    // Password validation
     if (password === "") {
       setPassworderror("*password is required");
     } else if (password !== signpsw) {
       setErrors("errors");
     } else {
-      // form reset after submission //
       setPassworderror("");
     }
 
-    // Reset only when both fields are filled(if both fields are not empty then reset)
+    // Reset only when both fields are filled
     if (
       email !== "" &&
       email === signemail &&
@@ -68,6 +69,7 @@ export default function Loginform() {
     ) {
       setEmail("");
       setPassword("");
+
       alert("Logged in Successfully!");
 
       navigate("/formsdetails", {
@@ -86,21 +88,21 @@ export default function Loginform() {
 
   return (
     <>
-      <div className="d-flex align-items-center justify-content-center vh-100">
+      <div className="login-page">
         <div
-          className="card rounded-5 shadow-lg p-2"
-          style={{ width: "400px" }}
-        >
+          className="login-card rounded-5 shadow-lg">
           {errors === "errors" && (
             <p className="err-msg mt-4 justify-content-center text-center fs-5">
-              {" "}
               Invalid Email or Password
             </p>
           )}
-          <form className="p-4" onSubmit={submitform} noValidate>
+
+          <form onSubmit={submitform} noValidate>
             <p className="text-center formheader">Login</p>
+
             <div>
               <label htmlFor="email">Email</label>
+
               <input
                 type="email"
                 value={email}
@@ -111,9 +113,12 @@ export default function Loginform() {
                 autoComplete="username"
               />
             </div>
+
             {emailerror && <p className="err-msg">{emailerror}</p>}
+
             <div className="mt-3">
               <label htmlFor="password">Password</label>
+
               <input
                 type="password"
                 value={password}
@@ -124,19 +129,31 @@ export default function Loginform() {
                 onChange={passwordfun}
               />
             </div>
+
             {passworderror && <p className="err-msg">{passworderror}</p>}
+
             <div className="m-3 justify-content-center text-center">
-              <button className="btn btn-primary w-100">Login</button>
+              <button className="btn btn-primary login-btn w-100">
+                Login
+              </button>
             </div>
           </form>
-          <Link to="/signupform" className="text-center">
+
+          <Link to="/signupform" className="forgot-link text-center">
             Forgot Password?
           </Link>
-          <div className="text-center mt-2 mb-4">
-            Don't have an account? <Link to="/signupform">Sign Up</Link>
+
+          <div className="text-center mt-2 mb-4 signup-text">
+            Don't have an account?{" "}
+            <Link to="/signupform" className="signup-link">
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>
     </>
   );
 }
+
+
+

@@ -3,6 +3,7 @@ import "./user-details.css";
 
 export default function UserDetails() {
   const location = useLocation();
+
   const name = location.state?.name;
   const email = location.state?.email;
   const phonenumber = location.state?.phonenumber;
@@ -10,24 +11,43 @@ export default function UserDetails() {
   const gender = location.state?.gender;
   const password = location.state?.password;
   const cpassword = location.state?.cpassword;
+
   return (
-    <div className="login-details-page flex-column">
-      <div className="page-details-header">
-        <p className="welcome">Welcome</p>
-        <p className="header-name">{name}🎉</p>
-      </div>
-      <div className="user-details-header">
-        <h1>Your Entered Details</h1>
+    <div className="login-details-page">
+      {/* Welcome Section */}
+      <div className="welcome-section">
+        <p className="welcome-text">Welcome</p>
+        <p className="header-name">{name} 🎉</p>
       </div>
 
+      <p className="details-title">Your Entered Details</p>
+
+      {/* Details Card */}
       <div className="user-details-card">
-        <div className="user-details-body">
-          <h4 className="text-center login-header">Login details</h4>
-          <hr />
+        {/* Card Header */}
+        <div className="card-top">
+          <div className="user-icon">
+            {name ? name.charAt(0).toUpperCase() : "U"}
+          </div>
+
+          <div>
+            <h2>{name}</h2>
+            <p>{email}</p>
+          </div>
+        </div>
+
+        {/* Login Details */}
+        <div className="details-section">
+          <h3 className="section-title">
+            <span className="section-icon">🔐</span>
+            Login Details
+          </h3>
+
           <div className="details-row">
             <div className="details-label">
-              <p>EMAIL</p>
+              <p>Email</p>
             </div>
+
             <div className="details-value">
               <p>{email}</p>
             </div>
@@ -37,17 +57,25 @@ export default function UserDetails() {
             <div className="details-label">
               <p>Password</p>
             </div>
+
             <div className="details-value">
               <p>{password}</p>
             </div>
           </div>
-          <h4 className="mt-5 text-center signup-header">SignUp details</h4>
-          <hr />
+        </div>
+
+        {/* Signup Details */}
+        <div className="details-section">
+          <h3 className="section-title">
+            <span className="section-icon">👤</span>
+            Signup Details
+          </h3>
 
           <div className="details-row">
             <div className="details-label">
               <p>Name</p>
             </div>
+
             <div className="details-value">
               <p>{name}</p>
             </div>
@@ -55,8 +83,9 @@ export default function UserDetails() {
 
           <div className="details-row">
             <div className="details-label">
-              <p>EMAIL</p>
+              <p>Email</p>
             </div>
+
             <div className="details-value">
               <p>{email}</p>
             </div>
@@ -66,6 +95,7 @@ export default function UserDetails() {
             <div className="details-label">
               <p>Phone Number</p>
             </div>
+
             <div className="details-value">
               <p>{phonenumber}</p>
             </div>
@@ -75,6 +105,7 @@ export default function UserDetails() {
             <div className="details-label">
               <p>Date of Birth</p>
             </div>
+
             <div className="details-value">
               <p>{dateofbirth}</p>
             </div>
@@ -85,6 +116,7 @@ export default function UserDetails() {
               <div className="details-label">
                 <p>Gender</p>
               </div>
+
               <div className="details-value">
                 <p>{gender}</p>
               </div>
@@ -95,15 +127,17 @@ export default function UserDetails() {
             <div className="details-label">
               <p>Password</p>
             </div>
+
             <div className="details-value">
               <p>{password}</p>
             </div>
           </div>
 
-          <div className="details-row">
+          <div className="details-row last-row">
             <div className="details-label">
               <p>Confirm Password</p>
             </div>
+
             <div className="details-value">
               <p>{cpassword}</p>
             </div>

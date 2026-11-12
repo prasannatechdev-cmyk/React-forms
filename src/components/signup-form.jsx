@@ -7,8 +7,10 @@ export default function Signupform() {
   const navigate = useNavigate();
 
   // Validation Patterns
+  const namepattern = /^[A-Za-z ]+$/;
   const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&*_]).{8,}$/;
+  const passwordpattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&*_]).{8,}$/;
   const phonepattern = /^[6-9][0-9]{9}$/;
 
   // Date restriction
@@ -40,6 +42,8 @@ export default function Signupform() {
 
     if (fnamevalue.trim() === "") {
       setFnamerror("*name is required");
+    } else if (!namepattern.test(fnamevalue)) {
+      setFnamerror("*name should contain only letters and spaces");
     } else {
       setFnamerror("");
     }
@@ -61,7 +65,6 @@ export default function Signupform() {
   };
 
   // Phone Number Validation
-  // Phone number is optional
   const changephonenumber = (event) => {
     const phonenumber = event.target.value;
 
@@ -146,6 +149,9 @@ export default function Signupform() {
     if (fullname.trim() === "") {
       setFnamerror("*name is required");
       formvalid = false;
+    } else if (!namepattern.test(fullname)) {
+      setFnamerror("*name should contain only letters and spaces");
+      formvalid = false;
     } else {
       setFnamerror("");
     }
@@ -185,7 +191,6 @@ export default function Signupform() {
     // Gender Validation
     if (gender === "") {
       setGendererror("");
-      // formvalid = false;
     } else {
       setGendererror("");
     }
@@ -215,6 +220,7 @@ export default function Signupform() {
     // Successful Form Submission
     if (formvalid) {
       alert("signed up Successfully!");
+
       navigate("/", {
         state: {
           uname: fullname,
@@ -249,17 +255,17 @@ export default function Signupform() {
 
   return (
     <>
-      {/* Signup Form */}
+      {/* Signup Page */}
 
-      <div className="m-5 d-flex justify-content-center align-items-center">
-        <div className="card shadow-lg rounded-5" style={{ width: "500px" }}>
+      <div className="signup-page d-flex justify-content-center align-items-center">
+        <div className="card signup-card shadow-lg">
           <form className="p-4" onSubmit={submitform} noValidate>
-            <p className="text-center form-header">SignUp</p>
+            {/* Heading */}
+            <p className="text-center form-header">Sign Up</p>
 
             {/* Full Name */}
             <div>
               <label htmlFor="fname">Full Name</label>
-
               <input
                 type="text"
                 className="form-control"
@@ -330,28 +336,26 @@ export default function Signupform() {
             <div className="mt-3">
               <label>Gender</label>
 
-              <br />
+              <div className="gender-options">
+                <div>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    onChange={changegender}
+                  />
+                  <span>Male</span>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  // checked={gender === "male"}
-                  onChange={changegender}
-                />
-                &nbsp;Male
-              </div>
-
-              <div>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  // checked={gender === "female"}
-                  onChange={changegender}
-                />
-                &nbsp;Female
+                <div>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    onChange={changegender}
+                  />
+                  <span>Female</span>
+                </div>
               </div>
             </div>
 
@@ -378,9 +382,12 @@ export default function Signupform() {
 
             {passworderror === "invalid" && (
               <p className="err-msg">
-                *At least 1 uppercase (A-Z) <br />
-                *At least 1 lowercase (a-z) <br />
-                *At least 1 digit (0-9) <br />
+                *At least 1 uppercase (A-Z)
+                <br />
+                *At least 1 lowercase (a-z)
+                <br />
+                *At least 1 digit (0-9)
+                <br />
                 *At least 1 symbol (!@#$&*_)
               </p>
             )}
@@ -403,16 +410,19 @@ export default function Signupform() {
             {cpassworderror && <p className="err-msg">{cpassworderror}</p>}
 
             {/* Submit Button */}
-            <div className="mt-3 justify-content-center text-center">
-              <button type="submit" className="btn btn-primary w-100">
-                SignUp
+            <div className="mt-4 text-center">
+              <button type="submit" className="signup-btn">
+                Sign Up
               </button>
             </div>
           </form>
 
           {/* Login Link */}
-          <div className="text-center mb-3">
-            Already have an account? <Link to="/">Login</Link>
+          <div className="text-center login-text">
+            Already have an account?{" "}
+            <Link to="/" className="login-link">
+              Login
+            </Link>
           </div>
         </div>
       </div>
